@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Murottal 30 Juz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+            background-color: #e0f2e9;
+            color: #1b5e20;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #a5d6a7;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .surah-list {
+            list-style: none;
+            padding: 0;
+        }
+        .surah-list li {
+            margin: 10px 20px;
+            padding: 15px;
+            background: #c8e6c9;
+            border-radius: 8px;
+            border: 2px solid #388e3c;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1b5e20;
+        }
+        .credit {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #388e3c;
+        }
+    </style>
+</head>
+<body>
+    <h1>Murottal Al-Qur'an 30 Juz</h1>
+    <div class="container">
+        <ul class="surah-list" id="surahList"></ul>
+    </div>
+    
+    <div class="credit">Sumber audio: mp3quran.net | Dibuat oleh Geci</div>
+    
+    <script>
+        const surahList = document.getElementById("surahList");
+        const surahNames = [
+            "Al-Fatihah", "Al-Baqarah", "Ali 'Imran", "An-Nisa'", "Al-Ma'idah", "Al-An'am", "Al-A'raf", "Al-Anfal", "At-Taubah", "Yunus",
+            "Hud", "Yusuf", "Ar-Ra'd", "Ibrahim", "Al-Hijr", "An-Nahl", "Al-Isra'", "Al-Kahf", "Maryam", "Taha",
+            "Al-Anbiya'", "Al-Hajj", "Al-Mu’minun", "An-Nur", "Al-Furqan", "Asy-Syu'ara'", "An-Naml", "Al-Qasas", "Al-Ankabut", "Ar-Rum",
+            "Luqman", "As-Sajdah", "Al-Ahzab", "Saba'", "Fatir", "Ya-Sin", "As-Saffat", "Sad", "Az-Zumar", "Ghafir",
+            "Fussilat", "Asy-Syura", "Az-Zukhruf", "Ad-Dukhan", "Al-Jathiyah", "Al-Ahqaf", "Muhammad", "Al-Fath", "Al-Hujurat", "Qaf",
+            "Az-Zariyat", "At-Tur", "An-Najm", "Al-Qamar", "Ar-Rahman", "Al-Waqi'ah", "Al-Hadid", "Al-Mujadilah", "Al-Hasyr", "Al-Mumtahanah",
+            "As-Saff", "Al-Jumu'ah", "Al-Munafiqun", "At-Taghabun", "At-Talaq", "At-Tahrim", "Al-Mulk", "Al-Qalam", "Al-Haqqah", "Al-Ma'arij",
+            "Nuh", "Al-Jinn", "Al-Muzzammil", "Al-Muddaththir", "Al-Qiyamah", "Al-Insan", "Al-Mursalat", "An-Naba'", "An-Nazi'at", "Abasa",
+            "At-Takwir", "Al-Infitar", "Al-Mutaffifin", "Al-Insyiqaq", "Al-Buruj", "At-Tariq", "Al-A'la", "Al-Ghashiyah", "Al-Fajr", "Al-Balad",
+            "Asy-Syams", "Al-Lail", "Ad-Duha", "Asy-Syarh", "At-Tin", "Al-'Alaq", "Al-Qadr", "Al-Bayyinah", "Az-Zalzalah", "Al-Adiyat",
+            "Al-Qari'ah", "At-Takathur", "Al-Asr", "Al-Humazah", "Al-Fil", "Quraisy", "Al-Ma'un", "Al-Kausar", "Al-Kafirun", "An-Nasr",
+            "Al-Masad", "Al-Ikhlas", "Al-Falaq", "An-Nas"
+        ];
+        
+        for (let i = 0; i < 114; i++) {
+            let surahNumber = (i + 1).toString().padStart(3, '0');
+            let li = document.createElement("li");
+            let button = document.createElement("button");
+            let audio = document.createElement("audio");
+            
+            button.textContent = `${i + 1}. ${surahNames[i]}`;
+            button.onclick = () => { audio.src = `https://server8.mp3quran.net/afs/${surahNumber}.mp3`; audio.play(); };
+            
+            audio.controls = true;
+            audio.src = `https://server8.mp3quran.net/afs/${surahNumber}.mp3`;
+            
+            li.appendChild(button);
+            li.appendChild(document.createElement("br"));
+            li.appendChild(audio);
+            surahList.appendChild(li);
+        }
+    </script>
+</body>
+</html>
+
+
+Nama surah sekarang sudah diperbaiki sesuai dengan yang asli, dan setiap surah sudah dikasih border yang lebih bagus. Coba dicek lagi ya, bro, kalau masih ada yang mau ditambah atau diperbaiki!
+
