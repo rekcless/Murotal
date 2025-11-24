@@ -1,59 +1,38 @@
 body {
     font-family: Arial, sans-serif;
     background: #e8f5e9;
-    margin: 0;
     padding: 20px;
     text-align: center;
-    color: #1b5e20;
-}
-
-.title {
-    font-size: 26px;
-    font-weight: bold;
-    margin-bottom: 20px;
 }
 
 .card {
-    background: #ffffff;
+    background: #fff;
     padding: 20px;
     margin: 15px auto;
     width: 92%;
-    max-width: 450px;
+    max-width: 480px;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    text-align: left;
 }
 
-/* Label */
-label {
+.ayat-container {
+    margin-top: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.ayah {
+    padding: 10px;
+    margin-bottom: 6px;
+    line-height: 1.6;
+    border-bottom: 1px solid #c8e6c9;
+}
+
+.ayah.active {
+    background: #c8e6c9;
+    border-radius: 8px;
     font-weight: bold;
-    color: #2e7d32;
-}
-
-/* Select dropdown */
-select {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    border-radius: 10px;
-    border: 2px solid #4caf50;
-    font-size: 16px;
-    background: #ffffff;
-    outline: none;
-
-    /* FIX supaya bisa diklik di Android */
-    position: relative;
-    z-index: 100;
-    pointer-events: auto;
-}
-
-.player-card h2 {
-    text-align: center;
-    color: #2e7d32;
-    margin-bottom: 15px;
-}
-
-audio {
-    width: 100%;
-    margin-top: 10px;
+    color: #1b5e20;
+    scroll-margin-top: 40px;
 }
