@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Murottal Sinkron Ayat</title>
+    <title>Murottal Al-Qur'an</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<h1 class="title">Murottal 30 Juz (Sinkron Ayat)</h1>
+<div class="app">
 
-<div class="card select-card">
-    <label for="surahSelect">Pilih Surah</label>
-    <select id="surahSelect"></select>
-</div>
+    <h1>Murottal Al-Qur'an</h1>
 
-<div class="card player-card">
-    <h2 id="surahTitle">Silakan pilih surah...</h2>
-    <audio id="audioPlayer" controls></audio>
-
-    <div id="ayatContainer" class="ayat-container">
-        <!-- Ayat muncul di sini -->
+    <div class="selector-box">
+        <select id="surahSelect">
+            <option value="">— Pilih Surah —</option>
+        </select>
     </div>
+
+    <div class="audio-card" id="playerBox" style="display:none;">
+        <div class="surah-title" id="surahTitle"></div>
+        <audio id="audioPlayer" controls></audio>
+
+        <div id="ayatBox"></div>
+    </div>
+
 </div>
 
 <script src="app.js"></script>
