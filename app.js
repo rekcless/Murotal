@@ -31,10 +31,10 @@ surahNames.forEach((name, index) => {
     surahSelect.appendChild(opt);
 });
 
-// event ketika surah dipilih
+// event ketika dipilih
 surahSelect.addEventListener("change", function() {
-    const number = this.value.toString().padStart(3, '0');
+    const num = this.value.toString().padStart(3, "0");
     surahTitle.textContent = surahNames[this.value - 1];
-    audioPlayer.src = `https://server8.mp3quran.net/afs/${number}.mp3`;
+    audioPlayer.src = `https://server8.mp3quran.net/afs/${num}.mp3`;
     audioPlayer.play();
 });
