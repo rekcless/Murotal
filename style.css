@@ -1,5 +1,5 @@
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     background: #e8f5e9;
     margin: 0;
     padding: 20px;
@@ -16,19 +16,21 @@ body {
 .card {
     background: #ffffff;
     padding: 20px;
-    margin: 10px auto;
-    width: 90%;
+    margin: 15px auto;
+    width: 92%;
     max-width: 450px;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     text-align: left;
 }
 
+/* Label */
 label {
     font-weight: bold;
     color: #2e7d32;
 }
 
+/* Select dropdown */
 select {
     width: 100%;
     padding: 12px;
@@ -36,13 +38,19 @@ select {
     border-radius: 10px;
     border: 2px solid #4caf50;
     font-size: 16px;
+    background: #ffffff;
     outline: none;
+
+    /* FIX supaya bisa diklik di Android */
+    position: relative;
+    z-index: 100;
+    pointer-events: auto;
 }
 
-.surah-player h2 {
+.player-card h2 {
+    text-align: center;
     color: #2e7d32;
     margin-bottom: 15px;
-    text-align: center;
 }
 
 audio {
