@@ -1,38 +1,70 @@
 body {
     font-family: Arial, sans-serif;
     background: #e8f5e9;
-    padding: 20px;
-    text-align: center;
-}
-
-.card {
-    background: #fff;
-    padding: 20px;
-    margin: 15px auto;
-    width: 92%;
-    max-width: 480px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.ayat-container {
-    margin-top: 20px;
-    max-height: 60vh;
-    overflow-y: auto;
-    padding-right: 10px;
-}
-
-.ayah {
-    padding: 10px;
-    margin-bottom: 6px;
-    line-height: 1.6;
-    border-bottom: 1px solid #c8e6c9;
-}
-
-.ayah.active {
-    background: #c8e6c9;
-    border-radius: 8px;
-    font-weight: bold;
+    margin: 0;
+    padding: 0;
     color: #1b5e20;
-    scroll-margin-top: 40px;
+}
+
+.app {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Dropdown FIX */
+.selector-box {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid #4caf50;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+select {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 2px solid #2e7d32;
+    font-size: 16px;
+    cursor: pointer;
+    background: #d8f3dc;
+}
+
+.audio-card {
+    background: #ffffff;
+    padding: 18px;
+    border-radius: 14px;
+    border: 2px solid #66bb6a;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.12);
+}
+
+.surah-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#audioPlayer {
+    width: 100%;
+}
+
+#ayatBox {
+    background: #f1f8e9;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #c5e1a5;
+    font-size: 18px;
+    margin-top: 15px;
+    line-height: 1.8;
+    text-align: right;
 }
