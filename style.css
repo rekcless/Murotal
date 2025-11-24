@@ -1,3 +1,4 @@
+/* ==== GLOBAL ==== */
 body {
     font-family: Arial, sans-serif;
     background: #e8f5e9;
@@ -17,16 +18,20 @@ h1 {
     margin-bottom: 15px;
 }
 
-/* Dropdown FIX */
+/* =====================================================
+   FIX UTAMA: Dropdown tidak bisa diklik
+   ===================================================== */
 .selector-box {
-    background: white;
+    background: #ffffff;
     padding: 15px;
     border-radius: 12px;
     border: 2px solid #4caf50;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     margin-bottom: 20px;
+
+    /* FIX PENTING */
     position: relative;
-    z-index: 10;
+    z-index: 9999;
 }
 
 select {
@@ -37,14 +42,23 @@ select {
     font-size: 16px;
     cursor: pointer;
     background: #d8f3dc;
+
+    /* FIX PENTING */
+    position: relative;
+    z-index: 10000;
 }
 
+/* ==== AUDIO CARD ==== */
 .audio-card {
     background: #ffffff;
     padding: 18px;
     border-radius: 14px;
     border: 2px solid #66bb6a;
     box-shadow: 0 6px 10px rgba(0,0,0,0.12);
+
+    /* supaya tidak nutup dropdown */
+    position: relative;
+    z-index: 1;
 }
 
 .surah-title {
@@ -58,6 +72,7 @@ select {
     width: 100%;
 }
 
+/* ==== AYAT BOX ==== */
 #ayatBox {
     background: #f1f8e9;
     padding: 15px;
@@ -67,4 +82,8 @@ select {
     margin-top: 15px;
     line-height: 1.8;
     text-align: right;
+
+    /* supaya tidak menutup dropdown */
+    position: relative;
+    z-index: 1;
 }
