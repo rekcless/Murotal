@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Murottal Al-Qur’an</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Figtree:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#f2f5f4;--panel:#fff;--ink:#14231f;--mute:#5d6f69;--line:#d5dfdc;--acc:#0f6b59;--acc-ink:#fff;--sel:#e1f0ec;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a1f;--panel:#14252b;--ink:#e6f0ee;--mute:#92a8a3;--line:#243a41;--acc:#7fd6bf;--acc-ink:#0b1c18;--sel:#1b3a3a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1a1f;--panel:#14252b;--ink:#e6f0ee;--mute:#92a8a3;--line:#243a41;--acc:#7fd6bf;--acc-ink:#0b1c18;--sel:#1b3a3a;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100dvh;background:var(--bg);color:var(--ink);font:400 16px/1.5 Figtree,system-ui,sans-serif}
+.app{max-width:440px;margin:0 auto;height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;background:var(--bg);overflow:hidden}
+@media(min-width:600px){body{padding:20px;background:linear-gradient(160deg,#0f5d4e,#082e35)}.app{height:min(860px,calc(100dvh - 40px));border-radius:32px;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.35)}}
+.top{display:flex;justify-content:space-between;align-items:center;padding:16px 20px 4px}
+h1{font-size:1.25rem;margin:0;font-weight:700}
+h2{font-size:1.1rem;margin:0 0 12px}
+.sub{color:var(--mute);font-size:.85rem;margin:0}
+.view{flex:1;overflow-y:auto;padding:12px 20px 16px}
+button{font:inherit;cursor:pointer;color:var(--ink)}
+.ib{width:46px;height:46px;border-radius:50%;border:0;background:var(--sel);display:inline-flex;align-items:center;justify-content:center;padding:0}
+.ib[aria-pressed=true]{color:var(--acc)}
+.big{width:70px;height:70px;border-radius:50%;border:0;background:var(--acc);color:var(--acc-ink);display:inline-flex;align-items:center;justify-content:center;padding:0}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.art{position:relative;margin:6px auto 0;width:min(100%,290px);aspect-ratio:1/1;border-radius:28px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#fff;background:radial-gradient(100% 80% at 50% 0%,rgba(127,214,191,.35),transparent 65%),linear-gradient(160deg,#13806a,#0a3a40);border:1px solid rgba(233,217,166,.5);overflow:hidden}
+.art::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Cg fill='none' stroke='white' stroke-opacity='.1'%3E%3Crect x='14' y='14' width='28' height='28'/%3E%3Crect x='14' y='14' width='28' height='28' transform='rotate(45 28 28)'/%3E%3C/g%3E%3C/svg%3E")}
+.art>*{position:relative}
+.bsm{font-family:Amiri,serif;color:#e9d9a6;font-size:1.1rem}
+.ar{font-family:Amiri,"Traditional Arabic",serif;font-size:clamp(3rem,16vw,4.6rem);line-height:1.35}
+.lat{font-size:1.4rem;font-weight:700;margin:18px 0 0;text-align:center}
+.meta{color:var(--mute);font-size:.9rem;margin:0;text-align:center}
+.seek{margin-top:16px}
+input[type=range]{width:100%;accent-color:var(--acc);margin:0}
+.times{display:flex;justify-content:space-between;color:var(--mute);font-size:.8rem}
+.ctl{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:8px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px;align-items:end}
+.fld label{display:block;font-size:.78rem;color:var(--mute);margin:0 0 3px}
+.fld:first-child{grid-column:1/-1}
+select,input[type=search]{width:100%;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:inherit}
+.chip{padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--panel)}
+.chip[aria-pressed=true]{background:var(--sel);border-color:var(--acc)}
+.opts{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:22px}
+.pill{position:relative;display:inline-flex;align-items:center;gap:8px;height:44px;padding:0 16px;border-radius:999px;border:0;background:var(--sel);color:var(--ink);font:inherit;font-size:.88rem;cursor:pointer}
+.pill.wide{flex:1 1 100%;justify-content:center}
+.pill select{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;border:0;padding:0;border-radius:999px}
+.pill select:focus-visible{outline:0}
+.pill:focus-within{outline:3px solid var(--acc);outline-offset:2px}
+.pill[aria-pressed=true]{background:var(--acc);color:var(--acc-ink);font-weight:700}
+.slpnote{color:var(--mute);font-size:.85rem;margin:10px 0 0;min-height:1.3em;text-align:center}
+.err{color:#b3261e;font-size:.9rem;margin:4px 0 0;text-align:center}
+@media(prefers-color-scheme:dark){.err{color:#ff9a90}}
+.tabs{display:flex;gap:8px;margin:12px 0 8px}
+.tabs button{padding:7px 14px;border-radius:999px;border:0;background:var(--sel);font-size:.85rem}
+.tabs button[aria-pressed=true]{background:var(--acc);color:var(--acc-ink);font-weight:700}
+ul{list-style:none;margin:0;padding:0}
+li button{display:flex;width:100%;align-items:center;gap:12px;text-align:left;border:0;background:none;border-radius:12px;padding:10px}
+li button:hover{background:var(--sel)}
+li button[aria-current=true]{background:var(--sel);box-shadow:inset 3px 0 0 var(--acc)}
+.no{min-width:2.2em;color:var(--mute);font-size:.85rem}
+.nm{flex:1}
+.na{font-family:Amiri,serif;font-size:1.3rem}
+.heart{color:var(--acc)}
+.empty{color:var(--mute);padding:14px 10px}
+.mini{display:flex;align-items:center;gap:12px;margin:0 12px 8px;padding:8px 8px 8px 16px;background:var(--panel);border:1px solid var(--line);border-radius:18px}
+.mini .mtxt{flex:1;display:flex;flex-direction:column;align-items:flex-start;border:0;background:none;padding:0;text-align:left;min-height:44px;justify-content:center}
+.mini .mtxt span{color:var(--mute);font-size:.8rem}
+.mini .ib{background:var(--acc);color:var(--acc-ink)}
+.nav{display:flex;border-top:1px solid var(--line);background:var(--panel)}
+.nav button{flex:1;padding:14px 8px;border:0;background:none;color:var(--mute);font-size:.9rem}
+.nav button[aria-current=page]{color:var(--acc);font-weight:700;box-shadow:inset 0 3px 0 var(--acc)}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div><h1>Murottal</h1><p class="sub">Al-Qur’an · 114 surah</p></div>
+  <button id="fav" class="ib" aria-pressed="false" aria-label="Tambah ke favorit"></button>
+</header>
+
+<section id="vp" class="view" aria-label="Pemutar">
+  <div class="art"><div class="bsm" lang="ar" dir="rtl">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div><div class="ar" id="ar" lang="ar" dir="rtl">الفاتحة</div></div>
+  <p class="lat" id="lat">Al-Fatihah</p>
+  <p class="meta" id="meta">Surah ke-1</p>
+  <div class="seek"><input id="seek" type="range" min="0" max="100" value="0" step="0.1" aria-label="Posisi audio"><div class="times"><span id="tc">0:00</span><span id="td">0:00</span></div></div>
+  <div class="ctl">
+    <button id="prev" class="ib" aria-label="Sebelumnya"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h2v14H6zM20 5v14L9 12z"/></svg></button>
+    <button id="play" class="big" aria-label="Putar"></button>
+    <button id="next" class="ib" aria-label="Berikutnya"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 5h2v14h-2zM4 5v14l11-7z"/></svg></button>
+  </div>
+  <div class="opts">
+    <label class="pill wide"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg><span id="qrl">Qari</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg><select id="qari" aria-label="Pilih qari"></select></label>
+    <label class="pill"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 3L5 14h6l-1 7 8-11h-6z"/></svg><span id="spdl">1×</span><select id="spd" aria-label="Kecepatan"><option value="0.85">0.85×</option><option value="1" selected>1×</option><option value="1.15">1.15×</option><option value="1.3">1.3×</option></select></label>
+    <label class="pill"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span id="slpl">Timer tidur</span><select id="slp" aria-label="Timer tidur"><option value="0">Timer mati</option><option value="15">15 menit</option><option value="30">30 menit</option><option value="60">60 menit</option></select></label>
+    <button id="auto" class="pill" aria-pressed="true">Otomatis: aktif</button>
+  </div>
+  <p class="slpnote" id="slpnote"></p>
+  <p class="err" id="err" role="alert"></p>
+</section>
+
+<section id="vl" class="view" aria-label="Daftar surah" hidden>
+  <h2>Daftar surah</h2>
+  <label for="q" class="sub">Cari surah</label>
+  <input id="q" type="search" placeholder="Nama atau nomor surah" autocomplete="off">
+  <div class="tabs" role="group" aria-label="Filter"><button id="tall" aria-pressed="true">Semua</button><button id="tfav" aria-pressed="false">Favorit</button><button id="trec" aria-pressed="false">Terakhir</button></div>
+  <ul id="ul"></ul>
+  <div id="recent" hidden></div>
+</section>
+
+<audio id="aud" preload="none"></audio>
+
+<div id="mini" class="mini" hidden>
+  <button id="mopen" class="mtxt" aria-label="Buka pemutar"><b id="mt">Al-Fatihah</b><span id="mq"></span></button>
+  <button id="mplay" class="ib" aria-label="Putar"></button>
+</div>
+<nav class="nav" aria-label="Menu"><button id="nvp" aria-current="page">Pemutar</button><button id="nvl">Surah</button></nav>
+</div>
+
+<script>
+const LAT="Al-Fatihah|Al-Baqarah|Ali ‘Imran|An-Nisa’|Al-Ma’idah|Al-An’am|Al-A’raf|Al-Anfal|At-Taubah|Yunus|Hud|Yusuf|Ar-Ra’d|Ibrahim|Al-Hijr|An-Nahl|Al-Isra’|Al-Kahf|Maryam|Ta Ha|Al-Anbiya’|Al-Hajj|Al-Mu’minun|An-Nur|Al-Furqan|Asy-Syu’ara’|An-Naml|Al-Qasas|Al-‘Ankabut|Ar-Rum|Luqman|As-Sajdah|Al-Ahzab|Saba’|Fatir|Ya Sin|As-Saffat|Sad|Az-Zumar|Gafir|Fussilat|Asy-Syura|Az-Zukhruf|Ad-Dukhan|Al-Jasiyah|Al-Ahqaf|Muhammad|Al-Fath|Al-Hujurat|Qaf|Az-Zariyat|At-Tur|An-Najm|Al-Qamar|Ar-Rahman|Al-Waqi’ah|Al-Hadid|Al-Mujadalah|Al-Hasyr|Al-Mumtahanah|As-Saff|Al-Jumu’ah|Al-Munafiqun|At-Tagabun|At-Talaq|At-Tahrim|Al-Mulk|Al-Qalam|Al-Haqqah|Al-Ma’arij|Nuh|Al-Jinn|Al-Muzzammil|Al-Muddassir|Al-Qiyamah|Al-Insan|Al-Mursalat|An-Naba’|An-Nazi’at|‘Abasa|At-Takwir|Al-Infitar|Al-Mutaffifin|Al-Insyiqaq|Al-Buruj|At-Tariq|Al-A’la|Al-Gasyiyah|Al-Fajr|Al-Balad|Asy-Syams|Al-Lail|Ad-Duha|Asy-Syarh|At-Tin|Al-‘Alaq|Al-Qadr|Al-Bayyinah|Az-Zalzalah|Al-‘Adiyat|Al-Qari’ah|At-Takasur|Al-‘Asr|Al-Humazah|Al-Fil|Quraisy|Al-Ma’un|Al-Kausar|Al-Kafirun|An-Nasr|Al-Masad|Al-Ikhlas|Al-Falaq|An-Nas".split("|");
+const ARB="الفاتحة|البقرة|آل عمران|النساء|المائدة|الأنعام|الأعراف|الأنفال|التوبة|يونس|هود|يوسف|الرعد|إبراهيم|الحجر|النحل|الإسراء|الكهف|مريم|طه|الأنبياء|الحج|المؤمنون|النور|الفرقان|الشعراء|النمل|القصص|العنكبوت|الروم|لقمان|السجدة|الأحزاب|سبأ|فاطر|يس|الصافات|ص|الزمر|غافر|فصلت|الشورى|الزخرف|الدخان|الجاثية|الأحقاف|محمد|الفتح|الحجرات|ق|الذاريات|الطور|النجم|القمر|الرحمن|الواقعة|الحديد|المجادلة|الحشر|الممتحنة|الصف|الجمعة|المنافقون|التغابن|الطلاق|التحريم|الملك|القلم|الحاقة|المعارج|نوح|الجن|المزمل|المدثر|القيامة|الإنسان|المرسلات|النبأ|النازعات|عبس|التكوير|الانفطار|المطففين|الانشقاق|البروج|الطارق|الأعلى|الغاشية|الفجر|البلد|الشمس|الليل|الضحى|الشرح|التين|العلق|القدر|البينة|الزلزلة|العاديات|القارعة|التكاثر|العصر|الهمزة|الفيل|قريش|الماعون|الكوثر|الكافرون|النصر|المسد|الإخلاص|الفلق|الناس".split("|");
+const QARI=[
+ ["Mishary Rashid Alafasy","https://server8.mp3quran.net/afs"],
+ ["Abdurrahman As-Sudais","https://server11.mp3quran.net/sds"],
+ ["Sa’ud Asy-Syuraim","https://server7.mp3quran.net/shur"],
+ ["Maher Al-Muaiqly","https://server12.mp3quran.net/maher"],
+ ["Abdul Basit Abdus Samad","https://server7.mp3quran.net/basit"],
+ ["Mahmoud Khalil Al-Husary","https://server13.mp3quran.net/husr"],
+ ["Muhammad Siddiq Al-Minshawi","https://server10.mp3quran.net/minsh"],
+ ["Saad Al-Ghamdi","https://server7.mp3quran.net/s_gmd"],
+ ["Nasser Al-Qatami","https://server6.mp3quran.net/qtm"],
+ ["Ahmad Al-Ajmi","https://server10.mp3quran.net/ajm"]
+];
+const $=id=>document.getElementById(id);
+const aud=$("aud"),sel=$("qari"),ul=$("ul");
+let cur=1,auto=true,favs=[],recent=[],mode="all",endAt=0;
+
+QARI.forEach((q,i)=>sel.add(new Option(q[0],i)));
+try{const s=JSON.parse(localStorage.getItem("murottal")||"{}");if(s.q>=0&&s.q<QARI.length)sel.value=s.q;if(s.n>=1&&s.n<=114)cur=s.n;if(Array.isArray(s.f))favs=s.f.filter(x=>x>=1&&x<=114);if(Array.isArray(s.r))recent=s.r.filter(x=>x>=1&&x<=114).slice(0,5)}catch(e){}
+
+function save(){try{localStorage.setItem("murottal",JSON.stringify({q:+sel.value,n:cur,f:favs,r:recent}))}catch(e){}}
+function url(){return QARI[sel.value][1]+"/"+String(cur).padStart(3,"0")+".mp3"}
+
+function render(){
+  const t=$("q").value.trim().toLowerCase().replace(/[’‘'\-\s]/g,"");
+  ul.innerHTML="";
+  let n=0;
+  LAT.forEach((nm,i)=>{
+    const k=nm.toLowerCase().replace(/[’‘'\-\s]/g,"");
+    if(mode==="fav"&&!favs.includes(i+1))return;if(mode==="recent"&&!recent.includes(i+1))return;
+    if(t&&!k.includes(t)&&String(i+1)!==t&&!ARB[i].includes($("q").value.trim()))return;
+    n++;
+    const li=document.createElement("li"),b=document.createElement("button");
+    b.innerHTML='<span class="no">'+(i+1)+'</span><span class="nm">'+nm+(favs.includes(i+1)?' <span class="heart" role="img" aria-label="favorit">♥</span>':'')+'</span><span class="na" lang="ar">'+ARB[i]+'</span>';
+    if(i+1===cur)b.setAttribute("aria-current","true");
+    b.onclick=()=>pick(i+1,true);
+    li.appendChild(b);ul.appendChild(li);
+  });
+  if(!n)ul.innerHTML='<li class="empty">'+(mode==="fav"&&!t?'Belum ada favorit. Ketuk ikon hati di pemutar untuk menandai.':mode==="recent"&&!t?'Belum ada riwayat. Putar sebuah surah dulu.':'Surah tidak ditemukan. Coba nama lain atau nomor 1–114.')+'</li>';
+}
+
+function show(){
+  $("ar").textContent=ARB[cur-1];
+  $("lat").textContent=LAT[cur-1];
+  $("meta").textContent="Surah ke-"+cur+" · "+QARI[sel.value][0];
+  document.title=LAT[cur-1]+" – Murottal Al-Qur’an";$("mt").textContent=LAT[cur-1];$("mq").textContent=QARI[sel.value][0];$("qrl").textContent=QARI[sel.value][0];
+  ul.querySelectorAll("button[aria-current]").forEach(b=>b.removeAttribute("aria-current"));
+  const bs=ul.querySelectorAll("button");
+  bs.forEach(b=>{if(b.querySelector(".no")&&+b.querySelector(".no").textContent===cur){b.setAttribute("aria-current","true")}});
+}
+
+function load(play){
+  $("err").textContent="";
+  aud.src=url();
+  aud.playbackRate=+$("spd").value;
+  recent=[cur].concat(recent.filter(x=>x!==cur)).slice(0,5);
+  show();updFav();renderRecent();save();
+  if(play)aud.play().catch(()=>{});
+}
+function pick(n,play){cur=Math.min(114,Math.max(1,n));load(play)}
+
+$("play").onclick=()=>{
+  if(!aud.src)load(true);
+  else if(aud.paused)aud.play().catch(()=>{});
+  else aud.pause();
+};
+aud.onplay=()=>setPlay(true);
+aud.onpause=()=>setPlay(false);
+aud.onended=()=>{setPlay(false);if(auto&&cur<114)pick(cur+1,true)};
+aud.onerror=()=>{$("err").textContent="Audio tidak bisa dimuat. Periksa koneksi internet atau coba qari lain."};
+$("prev").onclick=()=>pick(cur-1,true);
+$("next").onclick=()=>pick(cur+1,true);
+sel.onchange=()=>{const was=!aud.paused;const t=aud.currentTime;load(was);};
+$("spd").onchange=()=>{aud.playbackRate=+$("spd").value};
+$("auto").onclick=e=>{auto=!auto;e.target.setAttribute("aria-pressed",auto);e.target.textContent="Otomatis: "+(auto?"aktif":"mati")};
+$("q").oninput=()=>{render()};
+function updFav(){const on=favs.includes(cur),b=$("fav");b.setAttribute("aria-pressed",on);b.setAttribute("aria-label",on?"Hapus dari favorit":"Tambah ke favorit");b.innerHTML='<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="'+(on?"currentColor":"none")+'" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.8-9.500-9.500C1.200 8 3.300 4.800 6.500 4.800c2 0 3.600 1 5.500 3.100 1.900-2.100 3.500-3.100 5.500-3.100 3.200 0 5.300 3.200 4 6.700C19.500 16.200 12 21 12 21z"/></svg>'}
+function renderRecent(){const r=$("recent");r.innerHTML="";if(!recent.length)return;const l=document.createElement("span");l.className="sub";l.textContent="Terakhir didengar:";r.appendChild(l);recent.forEach(n=>{const b=document.createElement("button");b.textContent=LAT[n-1];b.onclick=()=>pick(n,true);r.appendChild(b)})}
+$("fav").onclick=()=>{const i=favs.indexOf(cur);if(i<0)favs.push(cur);else favs.splice(i,1);const sc=ul.scrollTop;updFav();save();render();ul.scrollTop=sc};
+
+$("slp").onchange=()=>{const m=+$("slp").value;endAt=m?Date.now()+m*60000:0;$("slpnote").textContent=m?"Berhenti dalam "+m+" menit":""};
+setInterval(()=>{if(!endAt)return;const s=Math.round((endAt-Date.now())/1000);if(s<=0){endAt=0;aud.pause();$("slp").value="0";lab();$("slpnote").textContent="Timer selesai. Audio dihentikan."}else $("slpnote").textContent="Berhenti dalam "+Math.floor(s/60)+" menit "+(s%60)+" detik"},1000);
+
+render();
+aud.src=url();show();updFav();renderRecent();setPlay(false);go("p");
+function svg(p,n){return '<svg width="'+n+'" height="'+n+'" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="'+(p?'M6 5h4v14H6zM14 5h4v14h-4z':'M8 5v14l11-7z')+'"/></svg>'}
+function setPlay(p){$("play").innerHTML=svg(p,30);$("mplay").innerHTML=svg(p,20);const l=p?"Jeda":"Putar";$("play").setAttribute("aria-label",l);$("mplay").setAttribute("aria-label",l)}
+function fmt(t){if(!isFinite(t))return"0:00";t=Math.floor(t);return Math.floor(t/60)+":"+String(t%60).padStart(2,"0")}
+aud.ontimeupdate=()=>{if(aud.duration)$("seek").value=aud.currentTime/aud.duration*100;$("tc").textContent=fmt(aud.currentTime)};
+aud.onloadedmetadata=()=>{$("td").textContent=fmt(aud.duration)};
+aud.onloadstart=()=>{$("seek").value=0;$("tc").textContent="0:00";$("td").textContent="0:00"};
+$("seek").oninput=()=>{if(aud.duration)aud.currentTime=$("seek").value/100*aud.duration};
+function go(v){const l=v==="l";$("vp").hidden=l;$("vl").hidden=!l;$("mini").hidden=!l;$("nvp").toggleAttribute("aria-current",!l);$("nvl").toggleAttribute("aria-current",l);if(!l)$("nvp").setAttribute("aria-current","page");else $("nvl").setAttribute("aria-current","page")}
+$("nvp").onclick=()=>go("p");$("nvl").onclick=()=>go("l");$("mopen").onclick=()=>go("p");$("mplay").onclick=()=>$("play").click();
+function setMode(m){mode=m;[["tall","all"],["tfav","fav"],["trec","recent"]].forEach(a=>$(a[0]).setAttribute("aria-pressed",a[1]===m));render()}
+$("tall").onclick=()=>setMode("all");$("tfav").onclick=()=>setMode("fav");$("trec").onclick=()=>setMode("recent");
+function lab(){$("spdl").textContent=$("spd").value+"×";const m=+$("slp").value;$("slpl").textContent=m?"Timer "+m+" menit":"Timer tidur"}
+$("spd").addEventListener("change",lab);$("slp").addEventListener("change",lab);lab();
+</script>
+</body>
+</html>
